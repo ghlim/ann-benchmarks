@@ -1,0 +1,25 @@
+# ann-benchmarks config for AIhNNGc (exact hierarchical NNG, C++ core).
+# Exact (recall ~= 1.0): no recall sweep. Two build modes:
+#   base        -> Index.build(X) batch bottom-up clustering
+#   incremental -> n sequential insert() calls (the true AIhNNGc path)
+float:
+  euclidean:
+    - base_args: ['@metric']
+      constructor: HNNG
+      disabled: false
+      docker_tag: ann-benchmarks-aihnngc
+      module: ann_benchmarks.algorithms.aihnngc
+      name: aihnngc
+      run_groups:
+        base:
+          args: {build: batch}
+  angular:
+    - base_args: ['@metric']
+      constructor: HNNG
+      disabled: false
+      docker_tag: ann-benchmarks-aihnngc
+      module: ann_benchmarks.algorithms.aihnngc
+      name: aihnngc
+      run_groups:
+        base:
+          args: {build: batch}

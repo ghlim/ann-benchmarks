@@ -17,3 +17,9 @@ results/*
 venv
 
 .idea
+
+# Compiled algorithm extension build artifacts (never commit)
+ann_benchmarks/algorithms/*/cpp/build/
+*.egg-info/
+*.so
+__pycache__/

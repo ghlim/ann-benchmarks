@@ -1,0 +1,27 @@
+# pyproject.toml -- build the `hnng` pybind11 extension via setup.py.
+#
+# Compiles and is tested: built with g++ 13.3 / pybind11 3.0.4; the full suite
+# (incl. C++/Python parity) runs in CI. The build recipe mirrors the hnswlib
+# ann-benchmarks packaging (pybind11 + setuptools).
+#
+# Build / install:
+#   pip install .
+#   python -c "import hnng; print(hnng.Index('l2'))"
+
+# pybind11 floor 2.12.0 matches the CMakeLists.txt FetchContent pin so the
+# setuptools and CMake build paths use the same pybind11 ABI.
+[build-system]
+requires = ["setuptools>=61", "wheel", "pybind11>=2.12.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hnng"
+version = "0.1.0"
+description = "Exact hierarchical Nearest Neighbor Graph (hNNG) index — C++/pybind11 core mirroring hnng_ref."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "see repository LICENSE" }
+dependencies = ["numpy>=1.21,<3"]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0,<9", "numpy>=1.21,<3"]

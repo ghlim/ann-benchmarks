@@ -1,0 +1,11 @@
+float:
+  any:
+  - base_args: ['@metric']
+    constructor: HnngLib
+    disabled: false
+    docker_tag: ann-benchmarks-hnnglib
+    module: ann_benchmarks.algorithms.hnnglib
+    name: hnnglib
+    run_groups:
+      base:
+        args: {}

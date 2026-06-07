@@ -1,0 +1,26 @@
+# hnnglib configuration for ann-benchmarks
+
+hnnglib:
+  docker_tag: ann-benchmarks-hnnglib
+  module: ann_benchmarks.algorithms.hnnglib
+  constructor: HnngLib
+  base_args: ["@metric"]
+  run_groups:
+    base:
+      args: |
+        [{"max_elements": 1000000}]
+      query_args: |
+        [{}]
+    
+    # Different parameter configurations for recall-QPS tradeoff
+    recall-90:
+      args: |
+        [{"max_elements": 1000000}]
+      query_args: |
+        [{"search_mode": "hierarchical"}]
+    
+    recall-95:
+      args: |
+        [{"max_elements": 1000000}]
+      query_args: |
+        [{"search_mode": "exhaustive"}]
